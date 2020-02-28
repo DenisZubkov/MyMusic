@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LibraryViewController.swift
 //  MyMusic
 //
 //  Created by Dennis Zubkoff on 28.02.2020.
@@ -8,15 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class LibraryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .green
+        
     }
-
-
 }
-
