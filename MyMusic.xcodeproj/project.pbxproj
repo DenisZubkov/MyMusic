@@ -10,6 +10,7 @@
 		7A16DB32240BD7D9004717AB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A16DB24240BD657004717AB /* Alamofire.framework */; };
 		7A16DB33240BD7D9004717AB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A16DB24240BD657004717AB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A16DB36240BDD4D004717AB /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16DB35240BDD4D004717AB /* SearchResponse.swift */; };
+		7A16DB38240C13F7004717AB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A16DB37240C13F7004717AB /* NetworkService.swift */; };
 		7A9061492409474000AA53FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9061482409474000AA53FA /* AppDelegate.swift */; };
 		7A90614B2409474000AA53FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90614A2409474000AA53FA /* SceneDelegate.swift */; };
 		7A90614D2409474000AA53FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A90614C2409474000AA53FA /* ViewController.swift */; };
@@ -90,6 +91,7 @@
 /* Begin PBXFileReference section */
 		7A16DB19240BD657004717AB /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7A16DB35240BDD4D004717AB /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		7A16DB37240C13F7004717AB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7A9061452409474000AA53FA /* MyMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9061482409474000AA53FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A90614A2409474000AA53FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				7ADA97C924095179002F05CA /* LibraryViewController.swift */,
 				7A90615C2409477900AA53FA /* MainTabBarController.swift */,
 				7A90615E2409489900AA53FA /* SearchViewController.swift */,
+				7A16DB37240C13F7004717AB /* NetworkService.swift */,
 				7A16DB35240BDD4D004717AB /* SearchResponse.swift */,
 				7A90614E2409474000AA53FA /* Main.storyboard */,
 				7A9061512409474300AA53FA /* Assets.xcassets */,
@@ -304,6 +307,7 @@
 			files = (
 				7A16DB36240BDD4D004717AB /* SearchResponse.swift in Sources */,
 				7A90614D2409474000AA53FA /* ViewController.swift in Sources */,
+				7A16DB38240C13F7004717AB /* NetworkService.swift in Sources */,
 				7A9061492409474000AA53FA /* AppDelegate.swift in Sources */,
 				7A90615F2409489900AA53FA /* SearchViewController.swift in Sources */,
 				7A90615D2409477900AA53FA /* MainTabBarController.swift in Sources */,

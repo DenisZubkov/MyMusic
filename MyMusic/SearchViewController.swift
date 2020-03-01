@@ -18,6 +18,8 @@ class SearchViewController: UITableViewController {
     
     var tracks = [Track]()
     let searchController = UISearchController(searchResultsController: nil)
+    
+    var networkService = NetworkService()
     private var timer: Timer?
     
     override func viewDidLoad() {
@@ -61,30 +63,9 @@ extension SearchViewController: UISearchBarDelegate {
         
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            let url = "https://itunes.apple.com/search"
-            let parameters = ["term" : "\(searchText)",
-                              "limit" : "10"]
-            
-            AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (dataResponse) in
-                
-                if let error = dataResponse.error {
-                    print("Error request: \(error.localizedDescription)")
-                    return
-                }
-                
-                guard let data = dataResponse.data else { return }
-                
-                let decoder = JSONDecoder()
-                do {
-                    let objects = try decoder.decode(SearchResponse.self, from: data)
-                    print("objects: ", objects)
-                    self.tracks = objects.results
-                    self.tableView.reloadData()
-                } catch let jsonError{
-                    print("Failed to decode JSON ", jsonError)
-                }
-//                let someString = String(data: data, encoding: .utf8)
-//                print(someString ?? "")
+            self.networkService.fetchTracks(searchText: searchText) { [weak self] (searchResults) in
+                self?.tracks = searchResults?.results ?? []
+                self?.tableView.reloadData()
             }
         })
         
