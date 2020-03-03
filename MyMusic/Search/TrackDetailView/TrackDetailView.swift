@@ -31,12 +31,16 @@ class TrackDetailView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let scale: CGFloat = 0.8
+        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        trackImageView.layer.cornerRadius = 5
     }
     
     func set(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
+        monitorStartTime()
         guard let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600") else { return }
         guard let url = URL(string: string600) else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
@@ -50,6 +54,37 @@ class TrackDetailView: UIView {
         player.replaceCurrentItem(with: playerItem)
         player.play()
     }
+    
+    // MARK: Time Setup
+    private func monitorStartTime() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeTrackImageView()
+        }
+        
+    }
+    
+    
+    // MARK: - Animation
+    
+    
+    private func enlargeTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.trackImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func reduceTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            let scale: CGFloat = 0.8
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
+       
+    }
+    
+    // MARK - IBActions
     
     @IBAction func dragDownButtenTapped(_ sender: UIButton) {
         
@@ -73,9 +108,11 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            enlargeTrackImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            reduceTrackImageView()
         }
     }
     

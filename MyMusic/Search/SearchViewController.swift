@@ -64,6 +64,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         
         setupTableView()
         setupSearchBar()
+        searchBar(searchController.searchBar, textDidChange: "KINO")
     }
     
     private func setupSearchBar() {
