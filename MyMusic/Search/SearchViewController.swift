@@ -120,6 +120,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         .first?.windows
         .filter({$0.isKeyWindow}).first
         let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
+        trackDetailView.set(viewModel: cellViewModel)
         window?.addSubview(trackDetailView)
 
     }
