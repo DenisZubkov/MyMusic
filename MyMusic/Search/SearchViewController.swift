@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 protocol SearchDisplayLogic: class {
   func displayData(viewModel: Search.Model.ViewModel.ViewModelData)
 }
@@ -100,7 +101,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        print(cellViewModel.previewUrl)
         cell.trackImageView.backgroundColor = .red
         cell.set(viewModel: cellViewModel)
 
