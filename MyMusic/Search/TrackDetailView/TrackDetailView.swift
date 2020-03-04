@@ -28,6 +28,16 @@ class TrackDetailView: UIView {
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeSlider: UISlider!
     
+    @IBOutlet weak var miniTrackView: UIView!
+    @IBOutlet weak var miniGoForwardButton: UIButton!
+    @IBOutlet weak var maximizeStackView: UIStackView!
+    
+    @IBOutlet weak var miniPlayPauseButton: UIButton!
+    @IBOutlet weak var miniTrackImageView: UIImageView!
+    @IBOutlet weak var miniTrackTitleLabel: UILabel!
+    
+    
+    
     let player: AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false
@@ -46,13 +56,17 @@ class TrackDetailView: UIView {
     
     func set(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
+        miniTrackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
+        playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
         observePlayerCurrentTime()
         guard let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600") else { return }
         guard let url = URL(string: string600) else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+        miniTrackImageView.sd_setImage(with: url, completed: nil)
         
     }
     
@@ -145,13 +159,17 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeTrackImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             reduceTrackImageView()
         }
     }
+    
+    
     
 }
 
