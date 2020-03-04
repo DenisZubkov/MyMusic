@@ -115,7 +115,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        self.tabBarDelegate?.maximizeTrackDetail(viewModel: cellViewModel)
+        self.tabBarDelegate?.maximizeTrackDetailController(viewModel: cellViewModel)
         
 //        let window  = UIApplication.shared.connectedScenes
 //        .filter({$0.activationState == .foregroundActive})

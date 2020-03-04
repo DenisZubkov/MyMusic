@@ -10,7 +10,7 @@ import UIKit
 
 protocol MainTabBarConrollerDelegate: class {
     func minimizeTrackDetail()
-    func maximizeTrackDetail(viewModel: SearchViewModel.Cell?)
+    func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?)
 }
 
 class MainTabBarController: UITabBarController {
@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController {
 
 extension MainTabBarController: MainTabBarConrollerDelegate {
     
-    func maximizeTrackDetail(viewModel: SearchViewModel.Cell?) {
+    func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?) {
         minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
