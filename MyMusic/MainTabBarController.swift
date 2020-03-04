@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainTabBarConrollerDelegate: class {
-    func minimizeTrackDetail()
+    func minimizeTrackDetailController()
     func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?)
 }
 
@@ -71,10 +71,12 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController: MainTabBarConrollerDelegate {
     
     func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?) {
+        
         minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
@@ -92,10 +94,12 @@ extension MainTabBarController: MainTabBarConrollerDelegate {
         self.trackDetailView.set(viewModel: viewModel)
     }
     
-    func minimizeTrackDetail() {
+    func minimizeTrackDetailController() {
+        
         maximizedTopAnchorConstraint.isActive = false
         bottomAnchorConstraint.constant = view.frame.height
         minimizedTopAnchorConstraint.isActive = true
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 0.7,
